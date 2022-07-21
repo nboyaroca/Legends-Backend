@@ -14,8 +14,9 @@ public class Comic {
     private Long id;
     private String img;
     private String name;
+    private String isbn;
     private String condition;
-    private String price;
+    private Double price;
 
 
 }

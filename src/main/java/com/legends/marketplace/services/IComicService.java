@@ -7,4 +7,7 @@ import java.util.List;
 public interface IComicService {
 
     List<Comic> getAll();
+
+    Comic findById(Long id);
+
 }

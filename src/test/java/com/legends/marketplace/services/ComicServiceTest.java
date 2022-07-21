@@ -8,8 +8,10 @@ import org.mockito.Mockito;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
+import java.util.Optional;
 
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.mockito.ArgumentMatchers.any;
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -30,5 +32,27 @@ class ComicServiceTest {
         var sut = comicService.getAll();
 
         assertThat(sut.size(), equalTo(2));
+        /*assertThat(sut.size(), equalTo(1)); TEST FAIL */
     }
+
+    @Test
+    void findByIdShouldReturnAComicWithSameParamId() {
+        var comicService = new ComicService(comicRepository);
+        var comic = new Comic();
+        comic.setImg("image");
+        comic.setName("title");
+        comic.setIsbn("isbn");
+        comic.setCondition("good condition");
+        comic.setPrice(50.5);
+
+        Mockito.when(comicRepository.findById(any(Long.class))).thenReturn(Optional.of(comic));
+
+        var sut = comicService.findById(1L);
+
+        assertThat(sut.getCondition(), equalTo(comic.getCondition()));
+        /*assertThat(sut.getCondition(), equalTo("hello")); TEST FAIL */
+
+    }
+
 }
+

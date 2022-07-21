@@ -5,6 +5,7 @@ import com.legends.marketplace.services.ComicService;
 import com.legends.marketplace.services.IComicService;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -25,5 +26,10 @@ public class ComicController {
         return comicService.getAll();
     }
 
+    @GetMapping("/comics/{id}")
+    Comic getById(@PathVariable Long id) {
+        Comic comic = this.comicService.findById(id);
+        return comic;
+    }
 
 }

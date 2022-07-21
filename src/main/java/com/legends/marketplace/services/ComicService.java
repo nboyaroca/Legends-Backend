@@ -19,4 +19,9 @@ public class ComicService implements IComicService{
     public List<Comic> getAll() {
         return comicRepository.findAll();
     }
+
+    @Override
+    public Comic findById(Long id) {
+        return comicRepository.findById(id).get();
+    }
 }
