@@ -42,14 +42,14 @@ class ComicServiceTest {
         comic.setImg("image");
         comic.setName("title");
         comic.setIsbn("isbn");
-        comic.setCondition("good condition");
+        comic.setComicCondition("good condition");
         comic.setPrice(50.5);
 
         Mockito.when(comicRepository.findById(any(Long.class))).thenReturn(Optional.of(comic));
 
         var sut = comicService.findById(1L);
 
-        assertThat(sut.getCondition(), equalTo(comic.getCondition()));
+        assertThat(sut.getComicCondition(), equalTo(comic.getComicCondition()));
         /*assertThat(sut.getCondition(), equalTo("hello")); TEST FAIL */
 
     }

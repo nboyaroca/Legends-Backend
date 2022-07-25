@@ -15,8 +15,6 @@ public class Comic {
     private String img;
     private String name;
     private String isbn;
-    private String condition;
+    private String comicCondition;
     private Double price;
-
-
 }
